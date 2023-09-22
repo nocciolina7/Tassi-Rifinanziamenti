@@ -15,9 +15,11 @@
         <label for="new_req">Inserisci il nuovo importo che ti chiede il cliente</label>
         <input type="number" name="new_req" id="new_req">
         <br>
+        <br>
 
         <label for="residuo">Inserisci l'importo del suo residuo</label>
         <input type="number" name="residuo" id="residuo">
+        <br>
         <br>
 
         <label for="actual_req">Di seguito trovi il totale che devi chiedere con il relativo tasso</label>
@@ -28,11 +30,13 @@
     </form>
 
 <script>
-    function calcolo() {
+    function calcolo(event) {
         var new_req = document.getElementById("new_req");
         var lowest = document.getElementById("lowest");
 
         lowest.innerHTML = new_req.value;
+
+        event.preventDefault();
         
     }
 </script>
