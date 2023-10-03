@@ -24,28 +24,28 @@
         <br>
         <br>
 
-        <label for="actual_req">Di seguito trovi quanto devi chiedere col relativo tasso</label>
+        <label for="actual_req">Di seguito trovi il minimo da richiedere col relativo tasso</label>
         <button onclick="calcolo()">Calcola!</button>
         <br>
         <br>
         <br>
 
-        <div>A partire da <span id="highest"></span> eur puoi applicare l' <span id="rate_min"></span>
+        <div>A partire da <span id="basso_tasso"></span> eur puoi applicare l' <span id="rate_min"></span>
             <br>
             <br>
-            Nuova liquidità netta: <span id="net_new_hi"></span> eur
-            <br>
-            <hr>
-            A partire da <span id="medium"></span> puoi applicare il <span id="rate_mid"></span>
-            <br>
-            <br>
-            Nuova liquidità netta: <span id="net_new_med"></span> eur
+            Nuova liquidità netta: <span id="net_new_basso"></span> eur
             <br>
             <hr>
-            A partire da <span id="lowest"></span> puoi applicare il <span id="rate_max"></span>
+            A partire da <span id="medio_tasso"></span> eur puoi applicare il <span id="rate_mid"></span>
             <br>
             <br>
-            Nuova liquidità netta: <span id="net_new_min"></span> eur
+            Nuova liquidità netta: <span id="net_new_medio"></span> eur
+            <br>
+            <hr>
+            A partire da <span id="alto_tasso"></span> eur puoi applicare il <span id="rate_max"></span>
+            <br>
+            <br>
+            Nuova liquidità netta: <span id="net_new_alto"></span> eur
             <br>
             <hr>
         </div>
@@ -62,22 +62,30 @@
             var new_req = document.getElementById("new_req");
             var residuo = document.getElementById("residuo");
             var residuo_num = parseInt(residuo.value);
-            var net_new_hi = document.getElementById("net_new_hi");
-            var net_new_med = document.getElementById("net_new_med");
-            var net_new_min = document.getElementById("net_new_min");
+            var net_new_basso = document.getElementById("net_new_basso");
+            var net_new_medio = document.getElementById("net_new_medio");
+            var net_new_alto = document.getElementById("net_new_alto");
             
 
-            var lowest = document.getElementById("lowest");
-            var medium = document.getElementById("medium");
-            var highest = document.getElementById("highest");
+            var alto_tasso = document.getElementById("alto_tasso");
+            var alto_tasso_num = parseInt(alto_tasso.value);
+            var medio_tasso = document.getElementById("medio_tasso");
+            var medium_num = parseInt(medio_tasso.value);
+            var basso_tasso = document.getElementById("basso_tasso");
+            var basso_tasso_num = parseInt(basso_tasso.value);
 
-            lowest.innerHTML = (residuo_num + residuo_num * 0.2).toString();
-            medium.innerHTML = (residuo_num + residuo_num * 0.5).toString();
-            highest.innerHTML = (residuo_num + residuo_num * 0.7).toString();
-            
-            net_new_hi.innerHTML = (residuo_num * 0.7).toString();
-            net_new_med.innerHTML = (residuo_num * 0.5).toString();
-            net_new_min.innerHTML = (residuo_num * 0.2).toString();
+            console.log(basso_tasso.value);
+
+            basso_tasso.innerHTML = (residuo_num * 5).toString();
+            var netto_perbasso = (residuo_num * 5).toString();
+            medio_tasso.innerHTML = (residuo_num * 2).toString();
+            var netto_permedio = (residuo_num * 2).toString();
+            alto_tasso.innerHTML = (residuo_num * 1.5).toString();
+            var netto_peralto = (residuo_num * 1.5).toString();
+
+            net_new_basso.innerHTML = (netto_perbasso - residuo_num).toString();
+            net_new_medio.innerHTML = (netto_permedio - residuo_num).toString();
+            net_new_alto.innerHTML = (netto_peralto - residuo_num).toString();
 
             rate_min.innerHTML = "8,95%";
             rate_mid.innerHTML = "9,45%";
