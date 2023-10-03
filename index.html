@@ -9,37 +9,84 @@
 </head>
 
 <body>
-    <h1>Wewe Nicole! Calcola qui il tasso per il tuo rifinanziamento :D</h1>
+    <h1>Wewe Nicole!</h1> 
+    <h2>Calcola qui il tasso per il tuo rifinanziamento :D</h2>
     <br>
     <form action="#">
-        <label for="new_req">Inserisci il nuovo importo che ti chiede il cliente</label>
+        <label for="new_req">Quanto ti chiede il cliente? </label>
         <input type="number" name="new_req" id="new_req">
         <br>
         <br>
 
-        <label for="residuo">Inserisci l'importo del suo residuo</label>
+        <label for="residuo">Inserisci il suo residuo</label>
         <input type="number" name="residuo" id="residuo">
         <br>
         <br>
-
-        <label for="actual_req">Di seguito trovi il totale che devi chiedere con il relativo tasso</label>
-        <button onclick="calcolo">Calcola!</button>
         <br>
-        <div id="lowest"></div>
-        
+
+        <label for="actual_req">Di seguito trovi quanto devi chiedere col relativo tasso</label>
+        <button onclick="calcolo()">Calcola!</button>
+        <br>
+        <br>
+        <br>
+
+        <div>A partire da <span id="highest"></span> eur puoi applicare l' <span id="rate_min"></span>
+            <br>
+            <br>
+            Nuova liquidità netta: <span id="net_new_hi"></span> eur
+            <br>
+            <hr>
+            A partire da <span id="medium"></span> puoi applicare il <span id="rate_mid"></span>
+            <br>
+            <br>
+            Nuova liquidità netta: <span id="net_new_med"></span> eur
+            <br>
+            <hr>
+            A partire da <span id="lowest"></span> puoi applicare il <span id="rate_max"></span>
+            <br>
+            <br>
+            Nuova liquidità netta: <span id="net_new_min"></span> eur
+            <br>
+            <hr>
+        </div>
+
+
     </form>
 
-<script>
-    function calcolo(event) {
-        var new_req = document.getElementById("new_req");
-        var lowest = document.getElementById("lowest");
+    <script>
+        function calcolo() {
+            var rate_min = document.getElementById("rate_min");
+            var rate_mid = document.getElementById("rate_mid");
+            var rate_max = document.getElementById("rate_max");
 
-        lowest.innerHTML = new_req.value;
+            var new_req = document.getElementById("new_req");
+            var residuo = document.getElementById("residuo");
+            var residuo_num = parseInt(residuo.value);
+            var net_new_hi = document.getElementById("net_new_hi");
+            var net_new_med = document.getElementById("net_new_med");
+            var net_new_min = document.getElementById("net_new_min");
+            
 
-        event.preventDefault();
-        
-    }
-</script>
+            var lowest = document.getElementById("lowest");
+            var medium = document.getElementById("medium");
+            var highest = document.getElementById("highest");
+
+            lowest.innerHTML = (residuo_num + residuo_num * 0.2).toString();
+            medium.innerHTML = (residuo_num + residuo_num * 0.5).toString();
+            highest.innerHTML = (residuo_num + residuo_num * 0.7).toString();
+            
+            net_new_hi.innerHTML = (residuo_num * 0.7).toString();
+            net_new_med.innerHTML = (residuo_num * 0.5).toString();
+            net_new_min.innerHTML = (residuo_num * 0.2).toString();
+
+            rate_min.innerHTML = "8,95%";
+            rate_mid.innerHTML = "9,45%";
+            rate_max.innerHTML = "9,95%";
+
+            event.preventDefault();
+
+        }
+    </script>
 
 
 </body>
