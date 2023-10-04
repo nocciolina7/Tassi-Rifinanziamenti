@@ -14,12 +14,12 @@
     <br>
     <form action="#">
         <label for="new_req"><FONT SIZE=5>Quanto ti chiede il cliente?</FONT></label>
-        <input type="number" name="new_req" id="new_req">
+        <input type="number" name="new_req" id="new_req" style="font-size: 22px">
         <br>
         <br>
 
         <label for="residuo"><FONT SIZE=5>Inserisci il suo residuo</FONT></label>
-        <input type="number" name="residuo" id="residuo">
+        <input type="number" name="residuo" id="residuo" style="font-size: 22px">
         <br>
         <br>
         <br>
@@ -30,19 +30,20 @@
         <br>
         <br>
 
-        <div><FONT SIZE=5>A partire da <b><span id="basso_tasso"></span></b> eur puoi applicare l' <b><span id="rate_min"></span></b>  <img src="https://media.tenor.com/CSXWW_uCUswAAAAd/cat-cats.gif" style="display: none" width="70" height="70" alt="Nice Cat">
+        <div id="risultati" style="display: none;">
+            <FONT SIZE=5>A partire da <b><span id="basso_tasso"></span></b> eur puoi applicare l' <b><span id="rate_min"></span></b>  <img src="https://media.tenor.com/CSXWW_uCUswAAAAd/cat-cats.gif" width="80" height="80" alt="Nice Cat">
             <br>
             <br>
             Nuova liquidità netta: <b><span id="net_new_basso"></span></b> eur
             <br>
             <hr>            
-            A partire da <b><span id="medio_tasso"></span></b> eur puoi applicare il <b><span id="rate_mid"></span></b>  <img src="https://media.tenor.com/7r-BGEoIohkAAAAd/meme-cat.gif" width="70" height="70" alt="Ok Cat">
+            A partire da <b><span id="medio_tasso"></span></b> eur puoi applicare il <b><span id="rate_mid"></span></b>  <img src="https://media.tenor.com/7r-BGEoIohkAAAAd/meme-cat.gif" width="80" height="80" alt="Ok Cat">
             <br>
             <br>
             Nuova liquidità netta: <b><span id="net_new_medio"></span></b> eur
             <br>
             <hr>
-            A partire da <b><span id="alto_tasso"></span></b> eur puoi applicare il <b><span id="rate_max"></span></b>  <img src="https://media.tenor.com/eKpimIRe1g0AAAAd/cat-laugh.gif" width="70" height="70" alt="Evil Cat">
+            A partire da <b><span id="alto_tasso"></span></b> eur puoi applicare il <b><span id="rate_max"></span></b>  <img src="https://media.tenor.com/eKpimIRe1g0AAAAd/cat-laugh.gif" width="80" height="80" alt="Evil Cat">
             <br>
             <br>
             Nuova liquidità netta: <b><span id="net_new_alto"></span></b> eur</FONT>
@@ -56,6 +57,9 @@
 
     <script>
         function calcolo() {
+            var risultati = document.getElementById("risultati");
+            risultati.style.display = 'block';
+
             var rate_min = document.getElementById("rate_min");
             var rate_mid = document.getElementById("rate_mid");
             var rate_max = document.getElementById("rate_max");
